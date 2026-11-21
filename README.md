@@ -1,222 +1,221 @@
-<!-- PCCAS | Professional GitHub README -->
+<!-- PCCAS | Password Security Auditing Toolkit -->
+
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=28&duration=2600&pause=800&color=00E5FF&center=true&vCenter=true&width=900&lines=PCCAS+%2F%2F+PASSWORD+SECURITY;AUDIT+%E2%80%A2+ANALYZE+%E2%80%A2+IMPROVE;DEFENSIVE+SECURITY+TOOLKIT" alt="PCCAS animated title" />
+# PCCAS
+### Password Security Auditing Toolkit
 
-<p><strong>Python-based password security auditing and policy assessment toolkit.</strong></p>
-<p><em>Understand password hygiene. Validate security policies. Learn through safe, synthetic simulations.</em></p>
+**A Python-based educational toolkit for understanding password hygiene and defensive password-policy checks.**
 
-<a href="https://github.com/Arnav123gupta/PCCAS-Password-Security-Auditing-Toolkit">
-  <img src="https://img.shields.io/badge/GitHub-PCCAS-181717?style=for-the-badge&logo=github" alt="GitHub repository" />
-</a>
-<img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
-<img src="https://img.shields.io/badge/Domain-Defensive%20Cybersecurity-087E8B?style=for-the-badge&logo=shield&logoColor=white" alt="Defensive cybersecurity" />
-<img src="https://img.shields.io/badge/Project-Educational-6D28D9?style=for-the-badge" alt="Educational project" />
+Analyze · Validate · Simulate · Report
 
 <p>
-  <a href="#-overview">Overview</a> ·
-  <a href="#-capabilities">Capabilities</a> ·
-  <a href="#-installation">Installation</a> ·
-  <a href="#-execution">Execution</a> ·
-  <a href="#-security-scope">Security scope</a>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
+  <img src="https://img.shields.io/badge/Tests-35%20passed-2E8B57?style=for-the-badge&logo=pytest&logoColor=white" alt="35 tests passed" />
+  <img src="https://img.shields.io/badge/Coverage-94%25-087E8B?style=for-the-badge" alt="94 percent coverage" />
+  <img src="https://img.shields.io/badge/Use-Defensive%20%26%20Educational-6D28D9?style=for-the-badge" alt="Defensive and educational" />
 </p>
+
+[Overview](#overview) · [Features](#features) · [Setup](#setup) · [Usage](#usage) · [Testing](#testing) · [Security scope](#security-scope)
 
 </div>
 
 ---
 
-##  Contents
+## Overview
 
-- [Overview](#-overview)
-- [Capabilities](#-capabilities)
-- [Architecture](#-architecture)
-- [Requirements](#-requirements)
-- [Installation](#-installation)
-- [Execution](#-execution)
-- [Testing](#-testing)
-- [Output](#-output)
-- [Security scope](#-security-scope)
-- [Roadmap](#-roadmap)
-- [Contributing](#-contributing)
+**PCCAS (Password Security Auditing Toolkit)** is a Python project that brings together several foundational password-security concepts in one local, educational workflow. It provides approximate password-strength indicators, configurable policy validation, structural hash-format hints, synthetic sample-data generation, a local lockout-policy simulation, and report generation.
 
-##  Overview
-
-**PCCAS (Password Security Auditing Toolkit)** is a Python educational project focused on defensive password-security concepts. It brings together password-strength indicators, configurable policy checks, structural hash-format hints, and a local account-lockout policy simulation.
-
-The toolkit is intended to make core password-security checks easier to understand and demonstrate in a controlled environment.
+The project is designed for learning, demonstration, and defensive security awareness. It is not a password-cracking tool and does not interact with real login services.
 
 > [!IMPORTANT]
-> **Defensive-use boundary:** PCCAS uses synthetic examples and local simulations. It does not crack passwords, collect credentials, access accounts, or send login attempts to real services. Never enter real or reused passwords into test tools.
+> **Use synthetic test data only.** Do not enter real, reused, or production passwords. PCCAS does not collect credentials, crack hashes, access accounts, or send authentication attempts to external services.
 
-##  Capabilities
+## Features
 
-| Component | Responsibility | Output |
-|---|---|---|
-| Password analyzer | Reviews length and character-class indicators; flags a small sample of common values | Rating and recommendations |
-| Test-data generator | Creates repeatable synthetic password examples | Local JSON dataset |
-| Hash-format analyzer | Checks hexadecimal structure and length for possible format matches | Candidate format hints |
-| Lockout simulator | Demonstrates a configurable lockout threshold and duration locally | Simulation result |
-| Policy checker | Validates samples against configured password requirements | Pass/fail checks |
-| Report generator | Saves demonstration results | JSON and TXT reports |
+| Module | What it does |
+|---|---|
+| Password analyzer | Reviews password length and character-class indicators, and provides improvement suggestions |
+| Synthetic data generator | Creates a small set of sample records for repeatable local demonstrations |
+| Hash-format analyzer | Examines hexadecimal structure and length to return possible format hints |
+| Lockout simulator | Demonstrates configurable attempt thresholds and lockout duration locally |
+| Policy checker | Checks sample passwords against configured policy requirements |
+| Report generator | Writes demonstration results in JSON and plain-text formats |
 
-##  Architecture
+### How the workflow fits together
 
 ```text
-                  +----------------------+
-                  |       main.py        |
-                  |   Demo entry point   |
-                  +----------+-----------+
-                             |
-          +------------------+------------------+
-          |                  |                  |
-          v                  v                  v
- +----------------+  +----------------+  +----------------+
- | Password       |  | Policy         |  | Hash-format    |
- | analyzer       |  | checker        |  | analyzer       |
- +----------------+  +----------------+  +----------------+
-          |                  |                  |
-          +------------------+------------------+
-                             |
-                 +-----------v-----------+
-                 | Lockout policy        |
-                 | simulation             |
-                 +-----------+-----------+
-                             |
-                 +-----------v-----------+
-                 | Report generator      |
-                 | JSON / TXT            |
-                 +-----------------------+
+                     main.py
+                (demo entry point)
+                       |
+          +------------+-------------+
+          |            |             |
+          v            v             v
+   Password       Policy        Hash-format
+   analyzer       checker        analyzer
+          |            |             |
+          +------------+-------------+
+                       |
+                       v
+              Local lockout-policy
+                  simulation
+                       |
+                       v
+                Report generator
+                  JSON / TXT
 ```
 
-### Repository structure
+### Project structure
 
 ```text
 PCCAS/
-├── data/                  # Synthetic sample datasets
-├── docs/                  # Project documentation
+├── data/
+│   ├── test_cases.json
+│   └── hash_samples.json
 ├── modules/
 │   ├── __init__.py
-│   ├── password_analyzer.py
+│   ├── attack_simulator.py
 │   ├── dictionary_generator.py
 │   ├── hash_format_analyzer.py
-│   ├── attack_simulator.py
+│   ├── password_analyzer.py
 │   ├── policy_checker.py
 │   └── report_generator.py
-├── reports/               # Locally generated reports
-├── screenshots/           # Project screenshots
-├── tests/                 # Automated tests
-├── main.py                # Demo entry point
+├── tests/
+│   ├── test_attack_simulator.py
+│   ├── test_dictionary_generator.py
+│   ├── test_hash_format_analyzer.py
+│   ├── test_main.py
+│   ├── test_password_analyzer.py
+│   ├── test_policy_checker.py
+│   └── test_report_generator.py
+├── main.py
 ├── requirements.txt
 └── README.md
 ```
 
-##  Requirements
+Generated reports are written to the local `reports/` directory. That directory is intentionally excluded from version control so generated output is not accidentally committed.
 
-- Python 3.10+
+## Requirements
+
+- Python 3.10 or newer
 - pip
 - Git
 
-##  Installation
+## Setup
 
-**1. Clone the repository**
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/Arnav123gupta/PCCAS-Password-Security-Auditing-Toolkit.git
 cd PCCAS-Password-Security-Auditing-Toolkit
 ```
 
-**2. Create and activate a virtual environment**
+### 2. Create and activate a virtual environment
 
-Linux / Kali Linux / macOS:
+**Linux / Kali Linux / macOS**
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Windows PowerShell:
+**Windows PowerShell**
 
 ```powershell
 py -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-**3. Install project dependencies**
+### 3. Install project dependencies
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-##  Execution
+## Usage
 
-Start the demonstration:
+Run the local demonstration from the repository root:
 
 ```bash
 python main.py
 ```
 
-The demo runs against built-in synthetic sample data. It does not connect to external services.
+The demo uses local synthetic examples. It does not connect to websites, external APIs, or authentication services.
 
-##  Testing
+### Generated reports
 
-Run the test suite from the project root:
+The report generator creates:
+
+- `reports/pccas_report.json` — structured report data.
+- `reports/pccas_report.txt` — a readable text summary.
+
+Inspect generated reports before sharing them. Keep real credentials and secrets out of report files and the repository.
+
+## Testing
+
+Run the automated test suite:
 
 ```bash
 python -m pytest -v
 ```
 
-Tests should be run after changes to confirm expected module behavior. Do not interpret a passing local test suite as proof of production readiness or comprehensive security.
+### Latest verified project checks
 
-##  Output
+At commit `60badce`, the project checks reported:
 
-The demonstration generates local reports in the `reports/` directory:
+| Check | Result |
+|---|---:|
+| Automated tests | 35 passed |
+| Branch-aware test coverage | 94% |
+| Bandit scan (`-ll`) | No issues identified |
+| pip-audit | No known vulnerabilities found |
+| Python compilation | Passed |
+| Synthetic JSON validation | Passed |
 
-- `pccas_report.json` — structured output for programmatic review.
-- `pccas_report.txt` — human-readable summary.
+These are results from the recorded local audit, not a guarantee that every future revision or environment will produce the same results.
 
-Generated reports may contain sample values. Review them before sharing and keep real credentials out of the project.
+### Run the additional audit tools
 
-##  Security scope
-
-PCCAS is deliberately limited to defensive, non-invasive functionality.
-
-- **Password scoring is approximate.** Character-set entropy is a theoretical estimate and does not fully represent human password choices, reuse, or predictable patterns.
-- **Common-password detection is limited.** The built-in sample is small and is not a comprehensive breach corpus.
-- **Hash identification is uncertain.** Length and character-set checks can suggest candidates but cannot reliably identify an algorithm.
-- **Simulation is local only.** The lockout module demonstrates policy behavior without authenticating against a service.
-- **Protect sensitive information.** Use synthetic data only; do not store production credentials, password dumps, or secrets in this repository.
-
-##  Quality and security checks
-
-Run the following checks from the project root:
+The additional tools below are used for project auditing and are not part of the runtime requirements file. Install them separately when you want to reproduce the full audit:
 
 ```bash
-python -m pytest -v
+python -m pip install coverage bandit pip-audit
 coverage run --branch -m pytest
 coverage report -m
 bandit -r main.py modules -ll
 pip-audit -r requirements.txt
+python -m compileall -q main.py modules tests
+python -m json.tool data/test_cases.json
+python -m json.tool data/hash_samples.json
 ```
 
-The password score and entropy value are simplified educational indicators,
-not a security guarantee. Hash-format results are structural hints only.
-All test data and lockout behavior are synthetic and local.
+## Security scope and limitations
 
-##  Roadmap
+PCCAS is intentionally limited to defensive, non-invasive, local functionality.
+
+- **Strength score is approximate:** the analyzer uses simplified indicators. Its score is not a guarantee of password strength and does not fully model human choice, reuse, or predictable patterns.
+- **Common-password sample is limited:** the built-in examples are educational test data, not a comprehensive or current breach corpus.
+- **Hash-format hints are inconclusive:** matching a length and character set cannot reliably identify a hash algorithm. Different formats can share the same structure.
+- **Lockout behavior is simulated:** the module demonstrates a policy locally; it does not attempt authentication against a real account or service.
+- **Synthetic data only:** do not add real passwords, password dumps, API keys, tokens, or other secrets to the repository.
+
+PCCAS is an educational project, not a substitute for a professional security assessment or an enterprise password-management system.
+
+## Roadmap
 
 - [ ] Improve password-pattern analysis and document scoring assumptions.
-- [ ] Expand policy configuration and edge-case tests.
+- [ ] Expand policy configuration and edge-case coverage.
 - [ ] Add HTML report generation.
-- [ ] Add reproducible security checks and coverage reporting.
-- [ ] Expand architecture documentation and screenshots.
+- [ ] Add a reproducible CI workflow for tests and security checks.
+- [ ] Add reviewed screenshots and expanded usage documentation.
 
-##  Contributing
+## Contributing
 
-Contributions are welcome when they improve defensive security, code quality, documentation, accessibility, or test coverage. Please keep changes within the project's safe educational scope.
+Contributions that improve defensive security education, code quality, documentation, accessibility, or test coverage are welcome. Keep proposed changes within the project's safe, local, educational scope.
 
-##  Disclaimer
+## Disclaimer
 
-This project is provided for educational and defensive security awareness. Assess only data and systems you own or are explicitly authorized to assess. PCCAS is not a substitute for a professional security audit.
+This project is provided for educational and defensive security awareness. Only assess data and systems you own or are explicitly authorized to assess. The maintainers make no guarantee that the toolkit is suitable for production security decisions.
 
 ---
 
@@ -224,6 +223,6 @@ This project is provided for educational and defensive security awareness. Asses
 
 **PCCAS — Password Security Auditing Toolkit**
 
-<sub>Python · Password hygiene · Policy validation · Defensive security</sub>
+*Python · Password hygiene · Policy validation · Defensive security*
 
 </div>
