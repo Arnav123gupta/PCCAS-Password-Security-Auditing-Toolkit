@@ -23,3 +23,29 @@ def test_short_password_fails():
 def test_empty_password_rejected():
     with pytest.raises(ValueError):
         check_password_policy("")
+
+
+def test_invalid_minimum_length_rejected():
+    with pytest.raises(ValueError):
+        check_password_policy("ExamplePassword123!", min_length=0)
+
+
+def test_boolean_minimum_length_rejected():
+    with pytest.raises(ValueError):
+        check_password_policy("ExamplePassword123!", min_length=True)
+
+
+def test_non_boolean_policy_flag_rejected():
+    with pytest.raises(ValueError):
+        check_password_policy("ExamplePassword123!", require_digit="yes")
+
+
+def test_optional_policy_requirements():
+    result = check_password_policy(
+        "long sample phrase",
+        min_length=12,
+        require_uppercase=False,
+        require_digit=False,
+        require_symbol=False
+    )
+    assert result["passed"] is True

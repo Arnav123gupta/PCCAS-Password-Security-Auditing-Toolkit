@@ -70,6 +70,11 @@ def analyze_password(password):
         "score": score,
         "rating": rating,
         "common_password": common,
-        "recommendations": recommendations
+        "recommendations": recommendations,
+        "limitations": (
+            "Approximate educational indicator only; not a guarantee "
+            "of password security. The entropy estimate assumes a "
+            "simplified character set and does not model human patterns."
+        )
     }
 

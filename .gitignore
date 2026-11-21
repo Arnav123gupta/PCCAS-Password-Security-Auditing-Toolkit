@@ -2,9 +2,10 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
 .env
 *.log
 reports/*
 !reports/.gitkeep
-data/*
-!data/.gitkeep

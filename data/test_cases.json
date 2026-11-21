@@ -1,0 +1,30 @@
+[
+    {
+        "password": "12345678",
+        "expected": "WEAK"
+    },
+    {
+        "password": "password123",
+        "expected": "WEAK"
+    },
+    {
+        "password": "Welcome123",
+        "expected": "WEAK"
+    },
+    {
+        "password": "Hello123!",
+        "expected": "WEAK"
+    },
+    {
+        "password": "RiverBlue2026",
+        "expected": "MODERATE"
+    },
+    {
+        "password": "N7!vQ2@pL9#xR4$m",
+        "expected": "STRONG"
+    },
+    {
+        "password": "T8#kLm2@Qp7!Vz5$",
+        "expected": "STRONG"
+    }
+]

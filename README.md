@@ -186,6 +186,22 @@ PCCAS is deliberately limited to defensive, non-invasive functionality.
 - **Simulation is local only.** The lockout module demonstrates policy behavior without authenticating against a service.
 - **Protect sensitive information.** Use synthetic data only; do not store production credentials, password dumps, or secrets in this repository.
 
+##  Quality and security checks
+
+Run the following checks from the project root:
+
+```bash
+python -m pytest -v
+coverage run --branch -m pytest
+coverage report -m
+bandit -r main.py modules -ll
+pip-audit -r requirements.txt
+```
+
+The password score and entropy value are simplified educational indicators,
+not a security guarantee. Hash-format results are structural hints only.
+All test data and lockout behavior are synthetic and local.
+
 ##  Roadmap
 
 - [ ] Improve password-pattern analysis and document scoring assumptions.

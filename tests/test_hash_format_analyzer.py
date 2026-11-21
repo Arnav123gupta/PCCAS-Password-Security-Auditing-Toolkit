@@ -26,3 +26,13 @@ def test_empty_input():
 def test_sha512_length():
     result = analyze_hash_format("c" * 128)
     assert result["possible_format"] == "SHA-512"
+
+
+def test_non_string_hash_rejected():
+    with pytest.raises(ValueError):
+        analyze_hash_format(None)
+
+
+def test_whitespace_only_hash_rejected():
+    with pytest.raises(ValueError):
+        analyze_hash_format("   ")

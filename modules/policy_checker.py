@@ -7,6 +7,7 @@ COMMON_PASSWORDS = {
     "qwerty123", "admin123", "welcome123"
 }
 
+
 def check_password_policy(
     password,
     min_length=12,
@@ -16,7 +17,23 @@ def check_password_policy(
     require_symbol=True
 ):
     if not isinstance(password, str) or not password:
-        raise ValueError("Password cannot be empty.")
+        raise ValueError("Password must be a non-empty string.")
+
+    if (
+        isinstance(min_length, bool)
+        or not isinstance(min_length, int)
+        or min_length < 1
+    ):
+        raise ValueError("Minimum length must be a positive integer.")
+
+    flags = {
+        "require_uppercase": require_uppercase,
+        "require_lowercase": require_lowercase,
+        "require_digit": require_digit,
+        "require_symbol": require_symbol,
+    }
+    if any(not isinstance(value, bool) for value in flags.values()):
+        raise ValueError("Policy requirement flags must be boolean.")
 
     checks = {
         "minimum_length": len(password) >= min_length,
@@ -30,7 +47,7 @@ def check_password_policy(
     failures = [name for name, passed in checks.items() if not passed]
 
     return {
-        "passed": len(failures) == 0,
+        "passed": not failures,
         "checks": checks,
         "failures": failures,
         "policy": {

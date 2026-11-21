@@ -17,3 +17,18 @@ def test_custom_lockout_policy():
 def test_invalid_attempt_limit():
     with pytest.raises(ValueError):
         simulate_resistance(0)
+
+
+def test_negative_lockout_duration_rejected():
+    with pytest.raises(ValueError):
+        simulate_resistance(5, -1)
+
+
+def test_boolean_attempt_limit_rejected():
+    with pytest.raises(ValueError):
+        simulate_resistance(True, 30)
+
+
+def test_boolean_duration_rejected():
+    with pytest.raises(ValueError):
+        simulate_resistance(5, True)
