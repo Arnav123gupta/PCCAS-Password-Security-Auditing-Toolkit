@@ -1,6 +1,25 @@
 {
-    "sample_32": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "sample_40": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-    "sample_64": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-    "sample_128": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  "scope": "synthetic_examples_only",
+  "samples": [
+    {
+      "id": "SYN-HASH-32",
+      "sample": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "label": "ambiguous 32-character hex"
+    },
+    {
+      "id": "SYN-HASH-40",
+      "sample": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "label": "possible SHA-1 structure"
+    },
+    {
+      "id": "SYN-HASH-64",
+      "sample": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "label": "possible SHA-256 structure"
+    },
+    {
+      "id": "SYN-HASH-128",
+      "sample": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "label": "possible SHA-512 structure"
+    }
+  ]
 }

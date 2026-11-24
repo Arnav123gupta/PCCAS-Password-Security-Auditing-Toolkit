@@ -1,0 +1,22 @@
+[
+    {
+        "sample_id": "SYN-001",
+        "pattern": "short_numeric",
+        "risk": "HIGH"
+    },
+    {
+        "sample_id": "SYN-002",
+        "pattern": "common_word_plus_digits",
+        "risk": "HIGH"
+    },
+    {
+        "sample_id": "SYN-003",
+        "pattern": "predictable_word_plus_year",
+        "risk": "MEDIUM"
+    },
+    {
+        "sample_id": "SYN-004",
+        "pattern": "long_mixed_sample",
+        "risk": "LOW"
+    }
+]
