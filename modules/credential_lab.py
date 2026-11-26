@@ -17,9 +17,9 @@ def get_synthetic_platform_examples():
 def assess_mock_credential_risk(records=None):
     """Assess labels in mock records; never accepts or tests real credentials."""
     records = records or [
-        {"id": "MOCK-001", "password_class": "common", "mfa": False},
-        {"id": "MOCK-002", "password_class": "unique", "mfa": True},
-        {"id": "MOCK-003", "password_class": "reused", "mfa": False},
+        {"id": "MOCK-001", "password_class": "common", "mfa": False},  # nosec B105 - mock classification label
+        {"id": "MOCK-002", "password_class": "unique", "mfa": True},  # nosec B105 - mock classification label
+        {"id": "MOCK-003", "password_class": "reused", "mfa": False},  # nosec B105 - mock classification label
     ]
     results = []
     for record in records:

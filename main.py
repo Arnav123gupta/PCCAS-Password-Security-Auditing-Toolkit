@@ -9,7 +9,7 @@ from modules.report_generator import generate_report
 from modules.credential_lab import get_synthetic_platform_examples, assess_mock_credential_risk
 
 def run_demo(output_dir="reports"):
-    sample_password = "N7!vQ2@pL9#xR4$m"
+    sample_password = "N7!vQ2@pL9#xR4$m"  # nosec B105 - synthetic demo fixture
     sample_hash = "a" * 64
 
     dataset_result = generate_test_dataset()

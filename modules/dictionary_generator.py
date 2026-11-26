@@ -3,13 +3,13 @@ import json
 from pathlib import Path
 
 TEST_CASES = [
-    {"password": "12345678", "expected": "WEAK"},
-    {"password": "password123", "expected": "WEAK"},
-    {"password": "Welcome123", "expected": "WEAK"},
-    {"password": "Hello123!", "expected": "WEAK"},
-    {"password": "RiverBlue2026", "expected": "MODERATE"},
-    {"password": "N7!vQ2@pL9#xR4$m", "expected": "STRONG"},
-    {"password": "T8#kLm2@Qp7!Vz5$", "expected": "STRONG"},
+    {"password": "12345678", "expected": "WEAK"},  # nosec B105 - synthetic test fixture
+    {"password": "password123", "expected": "WEAK"},  # nosec B105 - synthetic test fixture
+    {"password": "Welcome123", "expected": "WEAK"},  # nosec B105 - synthetic test fixture
+    {"password": "Hello123!", "expected": "WEAK"},  # nosec B105 - synthetic test fixture
+    {"password": "RiverBlue2026", "expected": "MODERATE"},  # nosec B105 - synthetic test fixture
+    {"password": "N7!vQ2@pL9#xR4$m", "expected": "STRONG"},  # nosec B105 - synthetic test fixture
+    {"password": "T8#kLm2@Qp7!Vz5$", "expected": "STRONG"},  # nosec B105 - synthetic test fixture
 ]
 
 def generate_test_dataset(output_path="data/test_cases.json"):
